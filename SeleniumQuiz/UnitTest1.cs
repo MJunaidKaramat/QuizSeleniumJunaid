@@ -39,7 +39,7 @@ namespace SeleniumQuiz
 
             #region xml_file_data
             string userName = "Junaid Ali";
-            string email = "junaidJunaidAli123@gmail.com";
+            string email = "junaidJunaidAli143@gmail.com";
             string password = "ABCabc123@@@";
             string date = "10";
             string month = "5";
@@ -70,7 +70,7 @@ namespace SeleniumQuiz
             Assert.AreEqual(expected, actual);
             
             registerUserObj.confirmRegisteration();
-            string expectedUserName = "Junaid";
+            string expectedUserName = userName;
             string actualUserName = registerUserObj.getText(verifyLogin);
             Assert.AreEqual(expectedUserName, actualUserName);
             registerUserObj.closeBrowser();
@@ -134,6 +134,24 @@ namespace SeleniumQuiz
 
             DownloadInvoiceClass obj = new DownloadInvoiceClass();
 
+            #region xml_file_data
+            string userName = "Junaid Ali";
+            string email = "junaidJunaidAli131@gmail.com";
+            string password = "ABCabc142@@@";
+            string date = "10";
+            string month = "5";
+            string year = "2000";
+            string firstName = "Junaid";
+            string lastName = "Ali";
+            string company = "Contour Software";
+            string address1 = "Gulberg";
+            string address2 = "Lahore";
+            string country = "Canada";
+            string state = "Toranto";
+            string city = "Toranto";
+            string zipCode = "ABC1234";
+            string phone = "03121234567";
+            #endregion
             obj.browserSelection(browserName);
             obj.mainPage(url);
             Assert.IsTrue(obj.verifyElementIsVisible(verifyHome));
@@ -141,13 +159,22 @@ namespace SeleniumQuiz
             obj.cartPage();
             Assert.IsTrue(obj.verifyElementIsVisible(VerifyCartPage));
             obj.proceedToCheckOut();
-            obj.RegisterNewUser("Junaid", "junaidjuaiadjunaid125@gmail.com", "Junaid123@", "5", "4", "2000", "Junaid",
-                "Junaid", "Contour", "Muridke", "Lahore", "Canada", "Toranto", "ABCZY", "39000", "0300-1234567");
+            obj.RegisterNewUser(userName, email, password, date, month, year, firstName,
+                lastName, company, address1, address2, country, state, city, zipCode, phone);
             obj.confirmRegisteration();
             obj.cartPage();
             obj.proceedToCheckOutAfterLogin();
             obj.placeOrder();
-            obj.cardDetails("Junaid", "1234 1234 1234 1234", "123", "07", "2022");
+
+            #region cardDetails
+            string cardName = "Junaid";
+            string cardNumber = "1234 1234 1234 1234";
+            string CVC = "123";
+            string exMonth = "07";
+            string exYear = "2022";
+            #endregion
+
+            obj.cardDetails(cardName, cardNumber, CVC, exMonth, exYear);
             obj.closeBrowser();
         }
         [TestMethod]
@@ -161,7 +188,58 @@ namespace SeleniumQuiz
             obj.mainPage(url);
             Assert.IsTrue(obj.verifyElementIsVisible(verifyHome));
             obj.productPage();
-            //Assert.IsTrue(obj.verifyElementIsVisible(VerifyCartPage));
+        }
+        [TestMethod]
+        public void TC_7_PlaceOrder_RegisterWhileCheckOut()
+        {
+            By verifyHome = By.XPath("//a[text()=' Home']");
+            By VerifyCartPage = By.XPath("//li[text()='Shopping Cart']");
+
+            RegisterWhileCheckOut obj = new RegisterWhileCheckOut();
+
+            #region xml_file_data
+            string userName = "Junaid Ali";
+            string email = "junaidJunaidAli141@gmail.com";
+            string password = "ABCabc123@@@";
+            string date = "10";
+            string month = "5";
+            string year = "2000";
+            string firstName = "Junaid";
+            string lastName = "Ali";
+            string company = "Contour Software";
+            string address1 = "Gulberg";
+            string address2 = "Lahore";
+            string country = "Canada";
+            string state = "Toranto";
+            string city = "Toranto";
+            string zipCode = "ABC1234";
+            string phone = "03121234567";
+            #endregion
+
+            obj.browserSelection(browserName);
+            obj.mainPage(url);
+            Assert.IsTrue(obj.verifyElementIsVisible(verifyHome));
+            obj.addProductsToCart();
+            obj.cartPage();
+            Assert.IsTrue(obj.verifyElementIsVisible(VerifyCartPage));
+            obj.proceedToCheckOut();
+            obj.RegisterNewUser(userName, email, password, date, month, year, firstName,
+                lastName, company, address1, address2, country, state, city, zipCode, phone);
+            obj.confirmRegisteration();
+            obj.cartPage();
+            obj.proceedToCheckOutAfterLogin();
+            obj.placeOrder();
+
+            #region cardDetails
+            string cardName = "Junaid";
+            string cardNumber = "1234 1234 1234 1234";
+            string CVC = "123";
+            string exMonth = "07";
+            string exYear = "2022";
+            #endregion
+
+            obj.cardDetails(cardName, cardNumber, CVC, exMonth, exYear);
+            obj.closeBrowser();
         }
     }
 }

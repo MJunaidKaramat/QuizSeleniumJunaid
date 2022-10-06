@@ -97,6 +97,7 @@
     <Compile Include="DownloadInvoiceClass.cs" />
     <Compile Include="GeneralMethodsClass.cs" />
     <Compile Include="logoutMethod.cs" />
+    <Compile Include="RegisterWhileCheckOut.cs" />
     <Compile Include="SearchProduct.cs" />
     <Compile Include="AddProductsInCart.cs" />
     <Compile Include="UnitTest1.cs" />
