@@ -10,12 +10,13 @@ using OpenQA.Selenium.Firefox;
 using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
+
 
 namespace SeleniumQuiz
 {
     public class GeneralMethodsClass
     {
+        
         private IWebDriver driver;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public void browserSelection(string br)
@@ -133,6 +134,10 @@ namespace SeleniumQuiz
             IWebElement webElement = findElement(path);
             Actions action = new Actions(driver);
             action.MoveToElement(webElement).Click().Perform();
+        }
+        public void TakeScreenShot()
+        {
+            ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile("Img.png");
         }
     }
 }

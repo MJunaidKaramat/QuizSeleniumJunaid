@@ -39,7 +39,7 @@ namespace SeleniumQuiz
 
             #region xml_file_data
             string userName = "Junaid Ali";
-            string email = "junaidJunaidAli143@gmail.com";
+            string email = "junaidJunaidAli144@gmail.com";
             string password = "ABCabc123@@@";
             string date = "10";
             string month = "5";
@@ -59,16 +59,18 @@ namespace SeleniumQuiz
             registerUserObj.browserSelection(browserName);
             registerUserObj.mainPage(url);
             Assert.IsTrue(registerUserObj.verifyElementIsVisible(verifyHome));
+            registerUserObj.TakeScreenShot();
             registerUserObj.SignUpPage();
 
             Assert.IsTrue(registerUserObj.verifyElementIsVisible(verifySignUpPage));
+            registerUserObj.TakeScreenShot();
             registerUserObj.RegisterNewUser(userName, email, password, date, month, year, firstName,
                 lastName, company, address1, address2, country, state, city, zipCode, phone);
             
             string expected = "Congratulations! Your new account has been successfully created!";
             string actual = registerUserObj.getText(verifySignUp);
             Assert.AreEqual(expected, actual);
-            
+            registerUserObj.TakeScreenShot();
             registerUserObj.confirmRegisteration();
             string expectedUserName = userName;
             string actualUserName = registerUserObj.getText(verifyLogin);
@@ -93,6 +95,7 @@ namespace SeleniumQuiz
             string expected = "Junaid";
             string actual = loginObj.getText(verifyLogin);
             Assert.AreEqual(expected , actual);
+            loginObj.TakeScreenShot();
             loginObj.closeBrowser();
         }
         [TestMethod]
@@ -107,6 +110,7 @@ namespace SeleniumQuiz
             string expectedUserName = "Login to your account";
             string actualUserName = logoutMethodObj.getText(verifyLogOut);
             Assert.AreEqual(expectedUserName, actualUserName);
+            logoutMethodObj.TakeScreenShot();
             logoutMethodObj.closeBrowser();
         }
         [TestMethod]
@@ -120,10 +124,13 @@ namespace SeleniumQuiz
             searchObj.browserSelection(browserName);
             searchObj.mainPage(url);
             Assert.IsTrue(searchObj.verifyElementIsVisible(verifyHome));
+            searchObj.TakeScreenShot();
             searchObj.searchPage();
             Assert.IsTrue(searchObj.verifyElementIsVisible(verifySearchProductPage));
+            searchObj.TakeScreenShot();
             searchObj.searchProduct("shirts");
             Assert.IsTrue(searchObj.verifyElementIsVisible(verifySearchedProductsPage));
+            searchObj.TakeScreenShot();
             searchObj.closeBrowser();
         }
         [TestMethod]
@@ -163,8 +170,10 @@ namespace SeleniumQuiz
                 lastName, company, address1, address2, country, state, city, zipCode, phone);
             obj.confirmRegisteration();
             obj.cartPage();
+            obj.TakeScreenShot();
             obj.proceedToCheckOutAfterLogin();
             obj.placeOrder();
+            obj.TakeScreenShot();
 
             #region cardDetails
             string cardName = "Junaid";
@@ -188,6 +197,8 @@ namespace SeleniumQuiz
             obj.mainPage(url);
             Assert.IsTrue(obj.verifyElementIsVisible(verifyHome));
             obj.productPage();
+            obj.TakeScreenShot();
+            obj.closeBrowser();
         }
         [TestMethod]
         public void TC_7_PlaceOrder_RegisterWhileCheckOut()
@@ -226,6 +237,7 @@ namespace SeleniumQuiz
             obj.RegisterNewUser(userName, email, password, date, month, year, firstName,
                 lastName, company, address1, address2, country, state, city, zipCode, phone);
             obj.confirmRegisteration();
+            obj.TakeScreenShot();
             obj.cartPage();
             obj.proceedToCheckOutAfterLogin();
             obj.placeOrder();
@@ -239,6 +251,7 @@ namespace SeleniumQuiz
             #endregion
 
             obj.cardDetails(cardName, cardNumber, CVC, exMonth, exYear);
+            obj.TakeScreenShot();
             obj.closeBrowser();
         }
     }
