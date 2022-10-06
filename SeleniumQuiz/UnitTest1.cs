@@ -26,7 +26,7 @@ namespace SeleniumQuiz
         string browserName = "Chrome";
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "dataSource.xml", "SignUpValid", DataAccessMethod.Sequential)]
+        //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "dataSource.xml", "SignUpValid", DataAccessMethod.Sequential)]
         public void UserRegisterationTestCase()
         {
             #region signUp
@@ -38,22 +38,22 @@ namespace SeleniumQuiz
             #endregion
 
             #region xml_file_data
-            string userName = TestContext.DataRow["userName"].ToString();
-            string email = TestContext.DataRow["userEmail"].ToString();
-            string password = TestContext.DataRow["userPassword"].ToString();
-            string date = TestContext.DataRow["date"].ToString();
-            string month = TestContext.DataRow["month"].ToString();
-            string year = TestContext.DataRow["year"].ToString();
-            string firstName = TestContext.DataRow["firstName"].ToString();
-            string lastName = TestContext.DataRow["lastName"].ToString();
-            string company = TestContext.DataRow["company"].ToString();
-            string address1 = TestContext.DataRow["userAddress1"].ToString();
-            string address2 = TestContext.DataRow["userAddress2"].ToString();
-            string country = TestContext.DataRow["country"].ToString();
-            string state = TestContext.DataRow["state"].ToString();
-            string city = TestContext.DataRow["userCity"].ToString();
-            string zipCode = TestContext.DataRow["zipcode"].ToString();
-            string phone = TestContext.DataRow["userPhone"].ToString();
+            string userName = "Junaid Ali";
+            string email = "junaidJunaidAli123@gmail.com";
+            string password = "ABCabc123@@@";
+            string date = "10";
+            string month = "5";
+            string year = "2000";
+            string firstName = "Junaid";
+            string lastName = "Ali";
+            string company = "Contour Software";
+            string address1 = "Gulberg";
+            string address2 = "Lahore";
+            string country = "Canada";
+            string state = "Toranto";
+            string city = "Toranto";
+            string zipCode = "ABC1234";
+            string phone = "03121234567";
             #endregion
             UserRegisteration registerUserObj = new UserRegisteration();
             registerUserObj.browserSelection(browserName);
